@@ -1,0 +1,42 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+    <h2 class="display-4"><i class="fa-solid fa-bells fa-fw pe-2"></i> Stay Informed</h2>
+
+
+    <form>
+        <div class="alert alert-info mt-3">
+            We will never share your information with anyone else or use for another purpose. This is solely being used to contact you regarding future Abortion Rights actions.
+        </div>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" aria-describedby="name" />
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="email" />
+        </div>
+
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" aria-describedby="phone">
+        </div>
+
+        <div class="mb-3">
+            <label for="skills" class="form-label">Special Skills</label>
+            <textarea type="text" class="form-control" id="skills" aria-describedby="phone" rows="4"></textarea>
+            <div class="text-muted">If you are interested in aiding the effort by organizing, helping build web apps and sites, flyer and media design, enter it here.</div>
+        </div>
+
+        <button type="submit" class="btn btn-dark"><i class="fa-solid fa-paper-plane-top pe-2 fa-fw"></i> Sign Me Up </button>
+        <button type="button" class="btn btn-danger"><i class="fa-solid fa-ban pe-2 fa-fw"></i> Cancel </button>
+
+    </form>
+
+</div>
