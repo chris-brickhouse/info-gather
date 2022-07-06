@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authorization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,7 +24,7 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 // public calls
-app.MapPost("/api/signup", [AllowAnonymous] async (SignupRequest form, HttpContext context, IWebHostEnvironment env) => { return await new BaseService(hca: context, env: env, captchaValidator: captcha).Contact(form); });
+app.MapPost("/api/gather", [AllowAnonymous] async (SignupRequest form, HttpContext context, IWebHostEnvironment env) => { return await new BaseService(hca: context, env: env).SignUp(form); });
 
 
 app.Run();

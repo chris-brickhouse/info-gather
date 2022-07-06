@@ -8,35 +8,60 @@
     <h2 class="display-4"><i class="fa-solid fa-bells fa-fw pe-2"></i> Stay Informed</h2>
 
 
-    <form>
+    <form id="form">
         <div class="alert alert-info mt-3">
             We will never share your information with anyone else or use for another purpose. This is solely being used to contact you regarding future Abortion Rights actions.
         </div>
 
-        <div class="mb-3">
-            <label for="name" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="name" aria-describedby="name" />
+        <div class="my-3">
+            <span class="text-danger">*</span> Required Field
         </div>
 
-        <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="email" />
+        <div class="mb-3 position-relative">
+            <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control needs-validation" id="Name" name="Name" aria-describedby="name" required onblur="clearError(this)" />
+            <div class="invalid-tooltip">
+                Name is required.
+            </div>
+        </div>
+
+        <div class="mb-3 position-relative">
+            <label for="email" class="form-label">Email address <span class="text-danger">*</span></label>
+            <input type="email" class="form-control needs-validation" id="Email" name="Email" aria-describedby="email" required onblur="clearError(this)" />
+            <div class="invalid-tooltip">
+                Valid email address is required.
+            </div>
         </div>
 
         <div class="mb-3">
             <label for="phone" class="form-label">Phone</label>
-            <input type="text" class="form-control" id="phone" aria-describedby="phone">
+            <input type="text" class="form-control" id="Phone" name="Phone" aria-describedby="phone" />
         </div>
 
         <div class="mb-3">
             <label for="skills" class="form-label">Special Skills</label>
-            <textarea type="text" class="form-control" id="skills" aria-describedby="phone" rows="4"></textarea>
+            <textarea type="text" class="form-control" id="Skills" name="Skills" aria-describedby="skills" rows="4"></textarea>
             <div class="text-muted">If you are interested in aiding the effort by organizing, helping build web apps and sites, flyer and media design, enter it here.</div>
         </div>
 
-        <button type="submit" class="btn btn-dark"><i class="fa-solid fa-paper-plane-top pe-2 fa-fw"></i> Sign Me Up </button>
+
+        <div class="mb-3">
+            <label for="skills" class="form-label">Other</label>
+            <textarea type="text" class="form-control" id="Other" name="other" aria-describedby="other" rows="4"></textarea>
+            <div class="text-muted">Any other information you wish to include.</div>
+        </div>
+
+        <button type="button" class="btn btn-dark" onclick="saveGather()"><i class="fa-solid fa-paper-plane-top pe-2 fa-fw"></i> Sign Me Up </button>
         <button type="button" class="btn btn-danger"><i class="fa-solid fa-ban pe-2 fa-fw"></i> Cancel </button>
 
     </form>
+
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="success" class="toast hide bg-success" role="alert" aria-live="assertive" aria-atomic="true">          
+            <div class="toast-body text-light">
+                <i class="fa-solid fa-badge-check pe-2"></i> Your information has been saved! On to the next person.
+            </div>
+        </div>
+    </div>
 
 </div>

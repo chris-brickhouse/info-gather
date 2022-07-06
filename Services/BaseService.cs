@@ -1,18 +1,29 @@
 ﻿namespace InfoGather.Services {
     public class BaseService {
-        public HttpContext _hca;
-        public BaseService(HttpContext? hca = null) {
+        public static HttpContext _hca;
+        public static IWebHostEnvironment _env;
+        public IGContext db;
+
+        public BaseService(HttpContext? hca = null, IWebHostEnvironment? env = null) {
             
             if (hca != null) {
                 _hca = hca;
             }
-            //db = new SOModels(GetRoot(), IsProd());
+            if (env != null) {
+                _env = env;
+            }
+            db = new IGContext();
         }
 
-        public async Task<dynamic> Contact(SignupRequest form) {
-            string thisMsg = $"Name: {form.fullName}({form.email}/{form.phone})<br>Regarding: {form.regarding}<br><br>Feedback:<br>{form.feedback}";
-            await SOUtils.SendEmail(InfoEmail, InfoEmail, "SO Feedback", thisMsg, form.email, db: db);
+        public async Task<dynamic> SignUp(SignupRequest form) {            
+            db.Users.Add(new Users() { Email = form.email, Name= form.name, Other = form.other,Skills = form.skills, Phone = form.phone });
+            await db.SaveChangesAsync();
             return new { success = true };
         }
+
+        public static string GetRootPath() {
+            return _env.ContentRootPath;
+        }
+
     }
 }
